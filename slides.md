@@ -581,7 +581,8 @@ clicks: 1
 </div>
 
 ---
-
+hide: true   # not shown in this version of the talk
+---
 <!-- Clustering paper (~/Documents/papers/tessera_clustering, in prep):
      two-point emulation from zoom regions alone. Figure copied from
      the paper's figures/global.png into public/clustering/. -->
@@ -659,7 +660,8 @@ $$
 </div>
 
 ---
-
+hide: true   # not shown in this version of the talk
+---
 # Extensions
 
 <div class="grid grid-cols-[11fr_9fr] gap-8 items-center mt-1">
@@ -741,7 +743,8 @@ $$
 </div>
 <div v-click="1" class="slot-label" style="left: 70.3%; top: 90%">&xi;(r) from zoom regions</div>
 ---
-
+hide: true   # not shown in this version of the talk
+---
 # How many simulations?
 
 <div class="w-[24rem]" style="font-size: 0.86rem; line-height: 1.35">
@@ -763,7 +766,8 @@ $$
 </div>
 
 ---
-
+hide: true   # not shown in this version of the talk
+---
 # What volume for each region?
 
 <div class="w-[24rem]" style="font-size: 0.86rem; line-height: 1.35">
@@ -782,7 +786,8 @@ $$
 </div>
 
 ---
-
+hide: true   # not shown in this version of the talk
+---
 <!-- FLAMELS meeting deck (Aug 2026), "Parent convergence tests" slides:
      figures in public/flamels/ -->
 
@@ -812,7 +817,8 @@ $$
 </div>
 
 ---
-
+hide: true   # not shown in this version of the talk
+---
 <!-- FLAMELS meeting deck (Aug 2026), "PM simulations + Selection" -->
 
 # PM parent simulations and region selection

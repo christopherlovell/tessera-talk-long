@@ -10,7 +10,6 @@ const show = computed(() => nav.currentSlideRoute.value?.meta?.slide?.frontmatte
 <template>
   <footer v-if="show" class="deck-footer">
     <span>{{ $slidev.configs.author }}</span>
-    <span>{{ $slidev.configs.conference }} · {{ $slidev.configs.date }}</span>
     <span>{{ $slidev.nav.currentPage }} / {{ $slidev.nav.total }}</span>
   </footer>
 </template>
