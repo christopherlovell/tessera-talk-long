@@ -6,16 +6,15 @@
     "dev": "slidev --open",
     "build": "slidev build",
     "export": "slidev export",
-    "export:pdf": "slidev export --executable-path /snap/bin/chromium --output tessera_talk.pdf --timeout 60000 --wait 2500",
-    "data": "python3 scripts/export_data.py"
+    "export:pdf": "slidev export --executable-path /snap/bin/chromium --output tessera_talk.pdf --timeout 60000 --wait 2500"
   },
   "dependencies": {
-    "@slidev/cli": "^52.19.0",
-    "@slidev/theme-default": "latest",
-    "gsap": "^3.15.0",
-    "vue": "^3.5.13"
+    "@slidev/cli": "52.19.0",
+    "@slidev/theme-default": "0.25.0",
+    "gsap": "3.15.0",
+    "vue": "3.5.41"
   },
   "devDependencies": {
-    "playwright-chromium": "^1.62.1"
+    "playwright-chromium": "1.62.1"
   }
 }
