@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.slidev/
+*.pdf
+# 340 MB OpenSeadragon tile pyramid, local only (symlink to the LtU deck);
+# the web build falls back to public/figures/mosaic_lowres.jpg
+public/data/deep_zoom
+shot_tmp.mjs

@@ -1,0 +1,511 @@
+/* Global styles — loaded automatically by Slidev.
+   White-background design matching "Short Quijote talk.pptx" (Arial,
+   dark text on white, plain bold headings). */
+
+:root {
+  --c-text: #1c1c1c;
+  --c-accent: #e04a00;      /* the pptx orange-red (arXiv links, Preliminary) */
+  --c-box-blue: #dce9f7;    /* slide 8 info boxes */
+  --c-box-green: #ddefdb;
+}
+
+/* typography matched to the slide-6 animation: semibold #444
+   headings, grey #555 body (the title slide keeps darker text via
+   .title-slide, set in the deck headmatter) */
+.slidev-layout {
+  background: #ffffff;
+  color: #555;
+  font-size: 1rem;
+}
+.slidev-layout.title-slide {
+  color: var(--c-text);
+}
+
+.slidev-layout h1 {
+  color: #444;
+  font-weight: 600;
+  font-size: 1.65rem;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+/* pptx-style square bullets */
+.slidev-layout ul {
+  list-style: square;
+}
+.slidev-layout li {
+  margin: 0.45rem 0;
+  line-height: 1.35;
+}
+.slidev-layout li::marker {
+  color: #666;
+}
+
+/* ---- layout helpers -------------------------------------------------- */
+
+/* column-ratio variants for layout: two-cols — Slidev puts the
+   frontmatter class on the column divs, so target the grid root
+   (class "two-columns") via :has() */
+.slidev-layout.two-columns { column-gap: 1.5rem; }
+.slidev-layout.two-columns:has(> .cols-33-66) { grid-template-columns: 1fr 2fr; }
+.slidev-layout.two-columns:has(> .cols-30-70) { grid-template-columns: 3fr 7fr; }
+.slidev-layout.two-columns:has(> .cols-40-60) { grid-template-columns: 2fr 3fr; }
+.slidev-layout.two-columns:has(> .cols-45-55) { grid-template-columns: 9fr 11fr; }
+
+/* cross-fading build-up frames (volume-resolution slide); the
+   !important out-ranks Slidev's default v-click transition */
+img.fade-frame {
+  transition: opacity 0.5s ease !important;
+}
+
+/* single full-slide figure (volume-resolution build-up, zoom grid) */
+.fig-main {
+  max-height: 92%;
+  max-width: 96%;
+  margin: auto;
+  position: absolute;
+  inset: 0;
+}
+
+/* centred fill-the-container figure (stacked/swapped via v-click) */
+.abs-fig {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.abs { position: absolute; }
+
+/* the between-panels arrows on the zoom-pipeline slide */
+.collage-arrow {
+  font-size: 2.2rem;
+  color: #999;
+}
+
+/* section / subtitle slides */
+.slidev-layout.section h1 {
+  font-size: 2.7rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.slidev-layout.section .arxiv {
+  font-size: 1.15rem;
+}
+
+/* dimmed full-bleed background image on section slides */
+.section-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.1;
+}
+
+/* ---- pptx elements --------------------------------------------------- */
+
+/* "Preliminary" tag, top-left */
+.prelim {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0.6rem;
+  padding: 0.15rem 0.6rem;
+  border: 2px solid var(--c-accent);
+  color: var(--c-accent);
+  background: #fdeee6;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.abs-tr { position: absolute; top: 0; right: 0; }
+
+/* inline (non-cornered) variant of the Preliminary tag */
+.prelim-inline {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border: 2px solid var(--c-accent);
+  color: var(--c-accent);
+  background: #fdeee6;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* arXiv reference, dark red */
+.arxiv {
+  color: #a2260c;
+  font-weight: 600;
+}
+
+/* inline highlight for key numbers/claims */
+.hl {
+  color: var(--c-accent);
+  font-weight: 600;
+}
+
+/* "next steps" call-out box (summary slide) */
+.next-steps {
+  border: 1.5px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
+  background: color-mix(in srgb, var(--c-accent) 6%, transparent);
+  border-radius: 10px;
+  padding: 0.45rem 0.9rem;
+}
+.next-steps li::marker { color: var(--c-accent); }
+.next-steps p { margin: 0.2rem 0; }
+.next-steps li { margin: 0.25rem 0; }
+/* keep the bullet markers clear of the box edge */
+.next-steps ul {
+  padding-left: 1.3rem;
+  margin: 0;
+}
+
+/* small-caps code/tool tags (SHARK, SWIFT, ...) */
+.tag {
+  font-variant: small-caps;
+  font-weight: 600;
+}
+
+/* coloured info boxes (Quijote slide) */
+.box-blue, .box-green, .box-red {
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem 0.7rem 0.6rem;
+  font-size: 0.82rem;
+}
+.box-blue { background: var(--c-box-blue); }
+.box-green { background: var(--c-box-green); }
+.box-red { background: #fbe9e5; }
+.box-blue li::marker { color: #4472c4; }
+.box-green li::marker { color: #538135; }
+.box-red li::marker { color: #a2260c; }
+.box-blue li, .box-green li, .box-red li { line-height: 1.3; }
+/* keep the square markers inside the coloured boxes */
+.box-blue ul, .box-green ul, .box-red ul {
+  padding-left: 1.1rem;
+  margin: 0;
+}
+/* KaTeX parameter-range block */
+.box-blue .katex-display {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 1.02em;
+}
+
+/* equation strips exported from the pptx: keep them equation-sized */
+.eq {
+  height: 2.1rem;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left center;
+  margin: 0.35rem 0 0.6rem;
+}
+.eq-tall { height: 2.8rem; }
+.eq-lg {
+  height: 3.1rem;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left center;
+  margin: 0.4rem 0 0.6rem;
+}
+
+/* emphasised equation box (global HMF integral); slightly wider than
+   its column, using the slack before the figure area */
+.eq-box {
+  border: 1.5px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
+  background: color-mix(in srgb, var(--c-accent) 5%, transparent);
+  border-radius: 8px;
+  padding: 0.55rem 0.9rem;
+  width: 114%;
+  /* the extra width overhangs leftward, clear of the figure area */
+  margin-left: -1.1rem;
+}
+.eq-box .katex-display {
+  margin: 0.25rem 0;
+  overflow: visible !important;
+}
+.eq-box .katex {
+  font-size: 1.05rem;
+}
+
+/* inline-flow KaTeX equation (emulator slide), matched to .eq-box */
+.eq-flow .katex-display {
+  margin: 0.4rem 0;
+}
+.eq-flow .katex {
+  font-size: 1.05rem;
+}
+
+/* dark cosmic-web strip on the title slide's left edge,
+   fading out to full white toward the slide body */
+.title-strip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 15%;
+  object-fit: cover;
+  -webkit-mask-image: linear-gradient(to right, black 30%, transparent 92%);
+  mask-image: linear-gradient(to right, black 30%, transparent 92%);
+}
+
+/* mirrored variant for the summary slide's right edge; scaleX(-1)
+   flips the mask along with the image, so the gradient direction here
+   matches .title-strip and renders as a leftward fade on screen */
+.title-strip-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 15%;
+  object-fit: cover;
+  transform: scaleX(-1);
+  -webkit-mask-image: linear-gradient(to right, black 30%, transparent 92%);
+  mask-image: linear-gradient(to right, black 30%, transparent 92%);
+}
+
+/* circular zoom inset holding an image (summary slide callouts) */
+.zoom-slot {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 2.5px solid #444;
+  background: #fff;
+}
+
+/* title-slide zoom callouts (region -> cone -> galaxy placeholder).
+   The white .slot fill deliberately covers the cone's tip so the two
+   cone edges read as tangents. */
+.title-zooms {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.title-zooms .region { fill: none; stroke: #555; stroke-width: 2; }
+.title-zooms .cone { fill: rgba(0, 0, 0, 0.05); stroke: #aaa; stroke-width: 1.2; }
+.title-zooms .slot { fill: #fff; stroke: #444; stroke-width: 2; }
+.title-zooms .slot-inner { fill: none; stroke: #ccc; stroke-width: 1; stroke-dasharray: 5 5; }
+
+/* placeholder captions centred in the callout circles (HTML, since
+   Slidev's CSS interferes with SVG <text> positioning) */
+.slot-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 0.72rem;
+  line-height: 1.25;
+  color: #999;
+  text-align: center;
+}
+
+/* title text (needs the h1 selector to out-rank the heading rule above) */
+.slidev-layout h1.title-main {
+  color: #111;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  max-width: 26rem;
+}
+
+/* per-slide footer (global-bottom.vue): name, conference, page number */
+.deck-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.1rem 0.35rem;
+  font-size: 0.62rem;
+  color: #555;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* figure captions */
+.caption {
+  font-size: 0.72rem;
+  opacity: 0.75;
+  text-align: center;
+  margin-top: 0.25rem;
+}
+.caption p { margin: 0; line-height: 1.35; }
+
+/* ---- TSG-deck additions ---------------------------------------------- */
+
+/* round headshot for crediting the person behind a result */
+.headshot {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+.credit {
+  font-size: 0.68rem;
+  color: #555;
+  line-height: 1.2;
+}
+
+/* placeholder for material still to be sourced */
+.todo {
+  display: inline-block;
+  border: 1.5px dashed var(--c-accent);
+  background: color-mix(in srgb, var(--c-accent) 6%, transparent);
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  color: #a2260c;
+}
+
+/* edge-to-edge slide (deep zoom mosaic): no layout padding */
+.slidev-layout.full-bleed {
+  padding: 0;
+}
+
+/* outline slide: the two parts as coloured cards */
+.outline-box {
+  font-size: 1.05rem;
+  padding: 1.1rem 1.5rem 1.2rem;
+}
+.outline-box .eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 0.2rem;
+}
+.outline-box p { margin: 0.2rem 0 0.5rem; }
+.outline-box li { margin: 0.35rem 0; }
+.outline-box ul ul { padding-left: 1.1rem; margin: 0.15rem 0 0; }
+
+/* full-slide video (multi-code slide) */
+.video-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+}
+
+/* literature scorecard (sensitivity & robustness section) */
+.lit-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.76rem;
+  line-height: 1.3;
+}
+.lit-table th, .lit-table td {
+  padding: 0.38rem 0.5rem;
+  border-bottom: 1px solid #ddd;
+  vertical-align: top;
+  text-align: left;
+}
+.lit-table th { font-weight: 600; color: #555; border-bottom: 1.5px solid #999; }
+.lit-table th:nth-child(2), .lit-table th:nth-child(3),
+.lit-table td.ok, .lit-table td.mid, .lit-table td.bad {
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.lit-table td.ok  { color: #538135; }
+.lit-table td.mid { color: #c07a00; }
+.lit-table td.bad { color: #a2260c; }
+.ref { color: #808080; font-size: 0.68rem; white-space: nowrap; }
+.box-blue .ref, .box-green .ref, .box-red .ref { white-space: normal; }
+
+/* stand-alone Tessera summary slide (round zoom renders) */
+.tess-zoom {
+  width: 6.6rem;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 2.5px solid #444;
+  flex: none;
+}
+.tess-zoom img { width: 100%; height: 100%; object-fit: cover; }
+.tess-summary .eq-box { width: 100%; }
+.tess-summary .eq-box .katex { font-size: 1rem; }
+.tess-summary .eq-box { padding: 0.35rem 0.8rem; }
+.tess-summary .eq-box .katex-display { margin: 0.15rem 0; }
+.tess-summary .caption { margin-top: 0.4rem; }
+.tess-summary li { line-height: 1.3; margin: 0.15rem 0; }
+
+/* reference strip at the foot of the literature-synthesis slide */
+.lit-story .box-blue, .lit-story .box-green, .lit-story .box-red {
+  font-size: 0.76rem;
+  padding: 0.55rem 0.8rem 0.55rem 0.5rem;
+}
+.lit-story .box-blue li, .lit-story .box-green li, .lit-story .box-red li { line-height: 1.25; }
+.lit-refs {
+  margin-top: 0.45rem;
+  font-size: 0.56rem;
+  line-height: 1.3;
+  color: #555;
+}
+
+/* HalfDome render gallery: five square patches + a note cell */
+.hd-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem 0.9rem;
+}
+.hd-grid img {
+  display: block;
+  width: 10.6rem;
+  height: 10.6rem;
+  margin: 0 auto;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+.hd-grid .caption { margin-top: 0.15rem; }
+.hd-note {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.4rem;
+}
+.hd-note p { margin: 0.3rem 0; }
+
+/* HalfDome full-screen renders, one per click */
+.hd-full { position: absolute; inset: 0; }
+.hd-full > div { position: absolute; inset: 0; }
+.hd-full img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hd-label {
+  position: absolute;
+  left: 1.4rem;
+  bottom: 1.2rem;
+  padding: 0.35rem 0.8rem;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 6px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #222;
+}
+.hd-src {
+  position: absolute;
+  right: 1.4rem;
+  bottom: 1.2rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 0.7rem;
+  color: #555;
+  z-index: 5;
+}
+
+/* hydrodynamic-extensions slide: roomier bullets beside the plane figure */
+.hydro-list { font-size: 0.95rem; line-height: 1.45; }
+.hydro-list li { margin-bottom: 0.7rem; }
+
+/* Quijote story slide: the figure wrappers animate between their
+   click-0 and click-1 positions (inline styles driven by $clicks) */
+.fig-anim { transition: all 0.9s ease; }
