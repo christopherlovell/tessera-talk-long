@@ -27,6 +27,7 @@ const { $clicks } = useSlideContext()
 
 // ---- geometry (viewBox 680 x 400) -----------------------------------
 const BOX = { x: 15, y: 95, s: 220 }
+const parentRender = import.meta.env.BASE_URL + 'figures/pm_parent_render.webp'   // through the base path
 const A = { cx: 170, cy: 170, t: 0.85, log: 0.5 }          // dense region (halo -> patch)
 const B = { cx: 65, cy: 275, r: 20, t: 0.15, log: -0.5 }   // void region
 const ZA = { cx: 330, cy: 150 }                            // zoom circles
@@ -278,7 +279,7 @@ const caps = computed(() => ({
   <div class="relative select-none">
     <svg viewBox="0 0 680 400" class="w-full">
       <!-- parent box: pmwd PM parent render (public/figures/pm_parent_render.webp) -->
-      <image href="/figures/pm_parent_render.webp" :x="BOX.x" :y="BOX.y" :width="BOX.s" :height="BOX.s" preserveAspectRatio="xMidYMid slice" />
+      <image :href="parentRender" :x="BOX.x" :y="BOX.y" :width="BOX.s" :height="BOX.s" preserveAspectRatio="xMidYMid slice" />
       <rect :x="BOX.x" :y="BOX.y" :width="BOX.s" :height="BOX.s" fill="none" stroke="#333" stroke-width="1.5" />
 
 

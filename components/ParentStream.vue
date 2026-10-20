@@ -9,6 +9,9 @@ const props = defineProps({
   columns: { type: Number, default: 2 },
   perColumn: { type: Number, default: 7 },
 })
+// root-relative src through the build's base path (the deck may be
+// served from a sub-path on GitHub Pages)
+const srcUrl = props.src.startsWith('/') ? import.meta.env.BASE_URL + props.src.slice(1) : props.src
 
 function mulberry32(seed) {
   return () => {
@@ -37,7 +40,7 @@ const cols = Array.from({ length: props.columns }, (_, c) => ({
     <div v-for="(c, i) in cols" :key="i" class="col"
          :style="{ animationDuration: c.duration + 's', animationDelay: c.delay + 's' }">
       <template v-for="rep in 2" :key="rep">
-        <img v-for="(t, j) in c.tiles" :key="rep + '-' + j" :src="src" alt=""
+        <img v-for="(t, j) in c.tiles" :key="rep + '-' + j" :src="srcUrl" alt=""
              :style="{ filter: `hue-rotate(${t.hue}deg) saturate(${t.sat}) brightness(${t.bright})` }">
       </template>
     </div>
